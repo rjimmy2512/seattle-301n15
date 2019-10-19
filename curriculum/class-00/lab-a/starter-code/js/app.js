@@ -1,3 +1,4 @@
+
 'use strict';
 
 const names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
@@ -76,8 +77,7 @@ function handleClick(event) {
 function showList() {
   for(let i = 0; i < allProducts.length; i++) {
     let liEl = document.createElement('li');
-    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes; ';
-    liEl.textContent = ' And ' + allProducts[i].name + ' has ' + allProducts[i].views + ' views';
+    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes and ' + allProducts[i].name + ' has ' + allProducts[i].views + ' views';
     list.appendChild(liEl);
   }
 }
