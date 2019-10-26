@@ -42,7 +42,7 @@ function displayPics(){
 
   console.log(viewed);
 
-  for (var i = 0; i < 3; i++){
+  for (let i = 0; i < 3; i++){
     const temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
@@ -61,12 +61,15 @@ function handleClick(event) {
     showList();
     makeChart();
   }
+
   for(let i = 0; i < names.length; i++){
-    if(event.target.id === allProducts[i].name) {
-      allProducts[i].votes += 1;
-      // console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
-      console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes ');
-      console.log(event.target.id + ' has ' + allProducts[i].views + ' views ');
+    const store = allProducts[i];
+    const votedp = allProducts[i].votes;
+    const viewedp = allProducts[i].views;
+    if(event.target.id === store.name) {
+      store.votes += 1;
+      console.log(event.target.id + ' has ' + votedp + ' votes ');
+      console.log(event.target.id + ' has ' + viewedp + ' views ');
     }
   }
   localStorage.busmall = JSON.stringify(allProducts);
@@ -75,16 +78,22 @@ function handleClick(event) {
 }
 
 function showList() {
-  for(let i = 0; i < allProducts.length; i++) {
+  //const i = 0;
+  // const votedOnList = allProducts[i].votes;
+  // const viewedOnList = allProducts[i].views;
+  // const namep = allProducts[i].name;
+  for (let i = 0;i < allProducts[i].length; i++) {
     let liEl = document.createElement('li');
-    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes and ' + allProducts[i].name + ' has ' + allProducts[i].views + ' views';
+    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
+
+    //liEl.textContent = namep + ' has ' + votedOnList + ' votes and ' + namep + ' has ' + viewedOnList + ' views';
     list.appendChild(liEl);
   }
 }
 
 function makeChartData(){
   allProducts.forEach(function(product){
-    labels.push(product.name);
+    labels.push(product.names);
     votes.push(product.votes);
     views.push(product.views);
   });
