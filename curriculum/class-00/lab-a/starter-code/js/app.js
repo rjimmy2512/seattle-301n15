@@ -17,6 +17,7 @@ let totalClicks = 0;
 const views = [];
 const votes = [];
 
+
 function Product(name) {
   this.name = name;
   this.path = 'img/' + name + '.jpg';
