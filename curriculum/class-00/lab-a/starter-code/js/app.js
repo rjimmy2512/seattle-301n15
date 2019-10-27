@@ -64,12 +64,9 @@ function handleClick(event) {
 
   for(let i = 0; i < names.length; i++){
     const store = allProducts[i];
-    const votedp = allProducts[i].votes;
-    const viewedp = allProducts[i].views;
     if(event.target.id === store.name) {
       store.votes += 1;
-      console.log(event.target.id + ' has ' + votedp + ' votes ');
-      console.log(event.target.id + ' has ' + viewedp + ' views ');
+      console.log(event.target.id + ' has ' + store.votes + ' votes in ' + store.views + ' views ');
     }
   }
   localStorage.busmall = JSON.stringify(allProducts);
@@ -78,22 +75,17 @@ function handleClick(event) {
 }
 
 function showList() {
-  //const i = 0;
-  // const votedOnList = allProducts[i].votes;
-  // const viewedOnList = allProducts[i].views;
-  // const namep = allProducts[i].name;
-  for (let i = 0;i < allProducts[i].length; i++) {
+  for (let i = 0; i < allProducts[i].length; i++) {
+    const store = allProducts[i];
     let liEl = document.createElement('li');
-    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
-
-    //liEl.textContent = namep + ' has ' + votedOnList + ' votes and ' + namep + ' has ' + viewedOnList + ' views';
+    liEl.textContent = store.name + ' has ' + store.votes + ' votes in ' + store.views + ' views';
     list.appendChild(liEl);
   }
 }
 
 function makeChartData(){
   allProducts.forEach(function(product){
-    labels.push(product.names);
+    labels.push(product.name);
     votes.push(product.votes);
     views.push(product.views);
   });
