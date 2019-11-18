@@ -67,7 +67,7 @@ function handleClick(event) {
     const store = allProducts[i];
     if(event.target.id === store.name) {
       store.votes += 1;
-      console.log(event.target.id + ' has ' + store.votes + ' votes in ' + store.views + ' views ');
+      console.log(`${event.target.id} has ${store.votes} votes in ${store.views} views`);
     }
   }
   localStorage.busmall = JSON.stringify(allProducts);
@@ -79,7 +79,7 @@ function showList() {
   for (let i = 0; i < allProducts[i].length; i++) {
     const store = allProducts[i];
     let liEl = document.createElement('li');
-    liEl.textContent = store.name + ' has ' + store.votes + ' votes in ' + store.views + ' views';
+    liEl.textContent = `${store.name} has ${store.votes} votes in ${store.views} views`;
     list.appendChild(liEl);
   }
 }
